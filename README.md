@@ -91,7 +91,15 @@ This APK can be installed directly on an Android device for demo and testing.
 1. Open `iosApp` in Xcode
 2. Build and run on an iOS simulator or device
 
----
+
+## APK Download
+
+You can download and install the latest debug APK for testing the Voyara mobile app:
+
+**[Download Voyara APK](assets/composeApp-debug.apk)**
+
+> Note: This is a debug build intended for testing and demonstration purposes.
+
 
 ##  Summary
 
