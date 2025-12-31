@@ -47,7 +47,7 @@ gradlew / gradlew.bat
 
 ## Application Flow (Reference Design)
 
-![Voyara App Wireframe](../assets/voyara_wireframe_flow.png)
+![Voyara App Wireframe](assets/voyara_wireframe_flow.png)
 
 This wireframe illustrates the planned user journey of the Voyara mobile app,
 from authentication to trip planning, community interaction, and calendar view.
@@ -56,7 +56,7 @@ from authentication to trip planning, community interaction, and calendar view.
 
 ## 🔄 System Data Flow (DFD)
 
-![Voyara DFD](../assets/voyara_dfd.png)
+![Voyara DFD](assets/voyara_dfd.png)
 
 The Data Flow Diagram shows how the mobile application interacts with backend
 services for authentication, trip management, search, community features,
@@ -65,7 +65,7 @@ and analytics.
 
 ## Data Layer Overview
 
-![Voyara Database Schema](../assets/voyara_database_schema.png)
+![Voyara Database Schema](assets/voyara_database_schema.png)
 
 This schema represents how users, trips, destinations, and itineraries are
 structured and stored to support the mobile application.
