@@ -5,6 +5,14 @@ It allows users to plan trips, build itineraries, explore destinations, manage b
 
 This repository contains the **mobile application implementation** for both **Android** and **iOS**, along with reference system designs.
 
+## APK Download
+
+You can download and install the latest debug APK for testing the Voyara mobile app:
+
+**[Download Voyara APK](assets/composeApp-debug.apk)**
+
+> Note: This is a debug build intended for testing and demonstration purposes.
+
 
 ## Key Features
 
@@ -90,15 +98,6 @@ This APK can be installed directly on an Android device for demo and testing.
 ### iOS
 1. Open `iosApp` in Xcode
 2. Build and run on an iOS simulator or device
-
-
-## APK Download
-
-You can download and install the latest debug APK for testing the Voyara mobile app:
-
-**[Download Voyara APK](assets/composeApp-debug.apk)**
-
-> Note: This is a debug build intended for testing and demonstration purposes.
 
 
 ##  Summary
