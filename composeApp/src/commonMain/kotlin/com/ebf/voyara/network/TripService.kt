@@ -57,7 +57,7 @@ class TripService {
 
             if (!response.status.isSuccess()) {
                 val errorText = response.bodyAsText()
-                println("\n❌ ERROR RESPONSE:")
+                println("\n ERROR RESPONSE:")
                 println("   Status: ${response.status.value}")
                 println("   Body: $errorText")
 

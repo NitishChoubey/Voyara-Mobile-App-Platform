@@ -23,9 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ebf.voyara.utils.TokenManager
 
-/**
- * User Profile Screen with Settings
- */
+
 @Composable
 fun ProfileScreen(
     tokenManager: TokenManager,

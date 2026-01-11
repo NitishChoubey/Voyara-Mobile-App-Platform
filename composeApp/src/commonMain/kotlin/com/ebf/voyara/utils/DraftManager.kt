@@ -2,10 +2,7 @@ package com.ebf.voyara.utils
 
 import com.ebf.voyara.data.TripDraft
 import com.russhwolf.settings.Settings
-import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.decodeFromString
-import kotlinx.datetime.Clock
 
 /**
  * Manages saving and retrieving trip drafts from local storage
@@ -14,11 +11,6 @@ class DraftManager(private val settings: Settings) {
 
     companion object {
         private const val DRAFTS_KEY = "trip_drafts"
-    }
-
-    private val json = Json {
-        prettyPrint = true
-        ignoreUnknownKeys = true
     }
 
     /**
@@ -31,13 +23,13 @@ class DraftManager(private val settings: Settings) {
             // Check if draft with same ID exists and remove it
             val existingIndex = currentDrafts.indexOfFirst { it.id == draft.id }
             if (existingIndex != -1) {
-                currentDrafts[existingIndex] = draft.copy(updatedAt = Clock.System.now().toEpochMilliseconds())
+                currentDrafts[existingIndex] = draft.copy(updatedAt = kotlin.time.Clock.System.now().toEpochMilliseconds())
             } else {
                 currentDrafts.add(draft)
             }
 
             // Save to settings
-            val draftsJson = json.encodeToString(currentDrafts)
+            val draftsJson = Json.encodeToString(currentDrafts)
             settings.putString(DRAFTS_KEY, draftsJson)
 
             println("DraftManager: Draft saved successfully - ID: ${draft.id}, Name: ${draft.name}")
@@ -59,7 +51,7 @@ class DraftManager(private val settings: Settings) {
                 println("DraftManager: No drafts found")
                 emptyList()
             } else {
-                val drafts = json.decodeFromString<List<TripDraft>>(draftsJson)
+                val drafts = Json.decodeFromString<List<TripDraft>>(draftsJson)
                 println("DraftManager: Retrieved ${drafts.size} drafts")
                 drafts.sortedByDescending { it.updatedAt } // Most recent first
             }
@@ -88,10 +80,12 @@ class DraftManager(private val settings: Settings) {
     fun deleteDraft(id: String): Boolean {
         return try {
             val currentDrafts = getAllDrafts().toMutableList()
-            val removed = currentDrafts.removeIf { it.id == id }
+            val initialSize = currentDrafts.size
+            val filteredDrafts = currentDrafts.filter { it.id != id }
+            val removed = filteredDrafts.size < initialSize
 
             if (removed) {
-                val draftsJson = json.encodeToString(currentDrafts)
+                val draftsJson = Json.encodeToString(filteredDrafts)
                 settings.putString(DRAFTS_KEY, draftsJson)
                 println("DraftManager: Draft deleted successfully - ID: $id")
             } else {

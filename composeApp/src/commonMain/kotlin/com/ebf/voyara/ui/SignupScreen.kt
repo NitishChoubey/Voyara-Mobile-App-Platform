@@ -33,9 +33,6 @@ import globetrotter.composeapp.generated.resources.Res
 import globetrotter.composeapp.generated.resources.voyaralogo1
 import org.jetbrains.compose.resources.painterResource
 
-/**
- * Premium Signup Screen with Dark Theme
- */
 @Composable
 fun SignupScreen(
     viewModel: SignupViewModel,
@@ -394,9 +391,7 @@ fun SignupScreen(
     }
 }
 
-/**
- * Premium Text Field for Signup with Dark Theme
- */
+
 @Composable
 fun PremiumSignupTextField(
     value: String,
@@ -449,9 +444,7 @@ fun PremiumSignupTextField(
     }
 }
 
-/**
- * Premium Password Field for Signup with Dark Theme
- */
+
 @Composable
 fun PremiumSignupPasswordField(
     value: String,
@@ -518,9 +511,7 @@ fun PremiumSignupPasswordField(
     }
 }
 
-/**
- * Premium Google Signup Button
- */
+
 @Composable
 fun PremiumGoogleSignupButton(
     onClick: () -> Unit,
@@ -604,9 +595,7 @@ fun PremiumGoogleSignupButton(
     }
 }
 
-/**
- * Premium Apple Signup Button
- */
+
 @Composable
 fun PremiumAppleSignupButton(
     onClick: () -> Unit,

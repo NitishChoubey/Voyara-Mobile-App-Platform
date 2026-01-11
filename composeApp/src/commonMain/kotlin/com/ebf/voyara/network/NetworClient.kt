@@ -12,11 +12,11 @@ val httpClient = HttpClient {
     // Throw exceptions on non-2xx status codes
     expectSuccess = true
 
-    // Configure timeouts - optimized for faster response
+    // Configure timeouts - increased for AI service cold starts
     install(HttpTimeout) {
-        requestTimeoutMillis = 30_000   // 30 seconds for the entire request
-        connectTimeoutMillis = 15_000   // 15 seconds to establish connection
-        socketTimeoutMillis = 20_000    // 20 seconds between packets
+        requestTimeoutMillis = 90_000   // 90 seconds for the entire request (AI cold start can take time)
+        connectTimeoutMillis = 30_000   // 30 seconds to establish connection
+        socketTimeoutMillis = 60_000    // 60 seconds between packets (for AI processing)
     }
 
     // Add retry mechanism for failed requests (optimized)

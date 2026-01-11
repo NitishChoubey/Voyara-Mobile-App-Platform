@@ -22,7 +22,7 @@ data class UserSignup(
     val id :  String,
     val email :  String ,
     val fullName:  String ,
-    val createdAt:  String? = null  // Made optional - backend might not return this
+    val createdAt:  String? = null
 )
 
 // Login Request
@@ -47,7 +47,7 @@ data class User(
     val id: String,
     val email: String,
     val fullName: String ,
-    val createdAt: String? = null  // Made optional - backend might not return this
+    val createdAt: String? = null
 )
 
 // Error Response (for API errors)

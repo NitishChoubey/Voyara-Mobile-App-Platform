@@ -25,9 +25,7 @@ import globetrotter.composeapp.generated.resources.Res
 
 import globetrotter.composeapp.generated.resources.VoyaraSplashScreen
 
-/**
- * Enhanced Clean & Modern Splash Screen
- */
+
 @Composable
 fun SplashScreen(
     onNavigateToHome: () -> Unit = {}
@@ -126,7 +124,7 @@ fun SplashScreen(
         ) {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 Text(
-                    text = "Crafted for Travelers",
+                    text = "Crafted for Travellers",
                     color = Color(0xFF64748B),
                     fontSize = 14.sp,
                     fontWeight = FontWeight.Light
