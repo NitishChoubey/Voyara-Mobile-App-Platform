@@ -4,6 +4,8 @@ import androidx.compose.animation.core.*
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -66,103 +68,127 @@ fun ItineraryBuilderScreen() {
             modifier = Modifier
                 .fillMaxSize()
                 .alpha(alphaAnim)
-                .padding(24.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+                .padding(20.dp)
         ) {
-            // Icon
-            Text(
-                text = "🗺️",
-                fontSize = 80.sp
-            )
-
-            Spacer(modifier = Modifier.height(24.dp))
-
-            // Title
-            Text(
-                text = "Itinerary Builder",
-                fontSize = 32.sp,
-                fontWeight = FontWeight.Bold,
-                color = Color.White,
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Message
-            Text(
-                text = "Coming Soon!",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.SemiBold,
-                color = Color(0xFFF97316),
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            // Description
-            Text(
-                text = "The Itinerary Builder feature will be available soon.\nStay tuned for updates!",
-                fontSize = 16.sp,
-                color = Color.White.copy(alpha = 0.7f),
-                textAlign = TextAlign.Center,
-                lineHeight = 24.sp
-            )
-
-            Spacer(modifier = Modifier.height(32.dp))
-
-            // Feature preview card
-            Card(
+            // Top Title Bar
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = Color.White.copy(alpha = 0.08f)
-                ),
-                shape = androidx.compose.foundation.shape.RoundedCornerShape(20.dp)
+                    .padding(vertical = 8.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Column(
-                    modifier = Modifier
-                        .padding(24.dp)
-                        .fillMaxWidth()
-                ) {
-                    Text(
-                        text = "What to Expect:",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = Color.White,
-                        modifier = Modifier.padding(bottom = 12.dp)
-                    )
+                Text(
+                    text = "Build Your Itinerary",
+                    fontSize = 24.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
+            }
 
-                    FeatureItem("📅", "Daily activity planning")
-                    FeatureItem("📍", "Location-based suggestions")
-                    FeatureItem("⏰", "Time optimization")
-                    FeatureItem("💰", "Budget tracking")
-                    FeatureItem("🎯", "Smart recommendations")
+            Spacer(modifier = Modifier.height(12.dp))
+
+            // Itinerary list
+            val sampleDays = listOf(
+                DaySample(
+                    title = "Day 1",
+                    destination = "Paris, France",
+                    activities = listOf("Eiffel Tower visit", "Seine river cruise", "Evening café stroll"),
+                    timeAndBudget = "9:00 AM · Budget: €120"
+                ),
+                DaySample(
+                    title = "Day 2",
+                    destination = "Louvre & Montmartre",
+                    activities = listOf("Louvre museum", "Lunch at Le Marais", "Sacré-Cœur sunset"),
+                    timeAndBudget = "10:00 AM · Budget: €90"
+                ),
+                DaySample(
+                    title = "Day 3",
+                    destination = "Versailles Day Trip",
+                    activities = listOf("Palace tour", "Gardens picnic"),
+                    timeAndBudget = "8:30 AM · Budget: €150"
+                )
+            )
+
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(sampleDays) { day ->
+                    DayCard(day = day)
                 }
             }
         }
     }
 }
 
+private data class DaySample(
+    val title: String,
+    val destination: String,
+    val activities: List<String>,
+    val timeAndBudget: String
+)
+
 @Composable
-private fun FeatureItem(icon: String, text: String) {
-    Row(
+private fun DayCard(day: DaySample) {
+    Card(
         modifier = Modifier
-            .fillMaxWidth()
-            .padding(vertical = 6.dp),
-        verticalAlignment = Alignment.CenterVertically
+            .fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = Color.White.copy(alpha = 0.04f)
+        ),
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(14.dp)
     ) {
-        Text(
-            text = icon,
-            fontSize = 20.sp,
-            modifier = Modifier.padding(end = 12.dp)
-        )
-        Text(
-            text = text,
-            fontSize = 14.sp,
-            color = Color.White.copy(alpha = 0.8f)
-        )
+        Column(modifier = Modifier.padding(16.dp)) {
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = day.title,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = Color.White
+                )
+                Text(
+                    text = day.timeAndBudget,
+                    fontSize = 12.sp,
+                    color = Color.White.copy(alpha = 0.7f)
+                )
+            }
+
+            Spacer(modifier = Modifier.height(6.dp))
+
+            Text(
+                text = day.destination,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.SemiBold,
+                color = Color(0xFFF97316)
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                day.activities.take(3).forEach { activity ->
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text(text = "•", color = Color.White.copy(alpha = 0.9f), modifier = Modifier.padding(end = 8.dp))
+                        Text(text = activity, color = Color.White.copy(alpha = 0.9f))
+                    }
+                }
+            }
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            // Footer budget/time (redundant small note)
+            Text(
+                text = "Estimated daily budget shown above",
+                fontSize = 12.sp,
+                color = Color.White.copy(alpha = 0.5f)
+            )
+        }
     }
 }
+
+
 
