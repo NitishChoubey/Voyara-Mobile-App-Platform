@@ -81,7 +81,7 @@ structured and stored to support the mobile application.
 
 ## Voyara App Screen Images
 ![Voyara_Screen_Images](assets/pic1.jpeg) 
-
+<img src="assets/pic1.jpeg" alt="App Screenshot" width="300" height="100">
 
 ## APK Build
 
