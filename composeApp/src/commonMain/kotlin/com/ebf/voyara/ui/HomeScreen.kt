@@ -40,9 +40,7 @@ data class QuickStat(
     val color: Color
 )
 
-/**
- * Premium Home Screen with Modern Design
- */
+
 @Composable
 fun HomeScreen(
     tokenManager: com.ebf.voyara.utils.TokenManager? = null,
@@ -1007,9 +1005,7 @@ private fun formatDate(dateString: String): String {
     return dateString
 }
 
-/**
- * Login Prompt Dialog shown when guest user tries to access protected features
- */
+
 @Composable
 private fun LoginPromptDialog(
     onDismiss: () -> Unit,

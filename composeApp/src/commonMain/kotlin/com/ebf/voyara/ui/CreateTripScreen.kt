@@ -194,11 +194,11 @@ fun CreateTripScreen(
                 FormSection(title = "Travel Dates") {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
+                        horizontalArrangement = Arrangement.spacedBy(2.dp)
                     ) {
                         // Start Date
                         DatePickerField(
-                            label = "Start Date",
+                            label = "Start",
                             value = startDate,
                             icon = "📅",
                             modifier = Modifier.weight(1f),
@@ -210,7 +210,7 @@ fun CreateTripScreen(
 
                         // End Date
                         DatePickerField(
-                            label = "End Date",
+                            label = "End",
                             value = endDate,
                             icon = "📅",
                             modifier = Modifier.weight(1f),
@@ -236,7 +236,7 @@ fun CreateTripScreen(
 
             // Number of Travelers Section
             item {
-                FormSection(title = "Number of Travelers") {
+                FormSection(title = "Number of Travellers") {
                     Row(
                         modifier = Modifier.fillMaxWidth(),
                         horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -285,7 +285,7 @@ fun CreateTripScreen(
 
             // Budget Section
             item {
-                FormSection(title = "Estimated Budget (Optional)") {
+                FormSection(title = "Estimated Budget") {
                     OutlinedTextField(
                         value = budget,
                         onValueChange = {
