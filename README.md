@@ -79,6 +79,10 @@ This schema represents how users, trips, destinations, and itineraries are
 structured and stored to support the mobile application.
 
 
+## Voyara App Screen Images
+![Voyara_Screen_Images}(assets/pic1.jpeg)
+
+
 ## APK Build
 
 A debug APK is available for testing purposes:
