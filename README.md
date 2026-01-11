@@ -80,7 +80,7 @@ structured and stored to support the mobile application.
 
 
 ## Voyara App Screen Images
-![Voyara_Screen_Images}(assets/pic1.jpeg)
+![Voyara_Screen_Images](assets/pic1.jpeg) 
 
 
 ## APK Build
